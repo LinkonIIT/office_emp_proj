@@ -1,0 +1,28 @@
+from django.db import models
+
+# Create your models here.
+class Department(models.Model):
+    name = models.CharField(max_length=100, null=False)
+    location = models.CharField(max_length=100)
+    def __str__(self):
+        return f"{self.name} {self.location}"
+    
+
+    
+class Role(models.Model):
+    name = models.CharField(max_length=100, null=False)
+    def __str__(self):
+        return f"{self.name}"
+
+class Employee(models.Model):
+    first_name = models.CharField(max_length=100, null=False)
+    last_name = models.CharField(max_length=100)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    salary = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    bonus = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    role = models.ForeignKey(Role, on_delete=models.CASCADE)
+    phone = models.IntegerField(max_length=15)
+    hire_date = models.DateField()
+    
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
