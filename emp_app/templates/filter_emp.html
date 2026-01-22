@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="container">
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/"><b>OEMS</b></a>
     <ul class="navbar-nav mr-auto">
@@ -33,11 +32,8 @@
 <hr>
         <h1>Filter Employee Details</h1>
         <hr>
-    
-
 <form action="/filter_emp" method="post">
     {% csrf_token %}
-
     <label for="name" class="form-label">Enter First or Last Name</label>
     <input type="text" name="name" class="form-control" value="{{ name }}">
 
@@ -46,20 +42,9 @@
     <label for="role" class="form-label">Role</label>
     <input type="text" name="role" class="form-control" value="{{ role }}">
     <hr>
-
   <button type="submit" class="btn btn-primary">Submit</button>
-
-
 </form>
-
-
-
-       
-       
-
     </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
