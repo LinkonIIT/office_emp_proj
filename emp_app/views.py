@@ -4,11 +4,9 @@ from .models import Employee, Role, Department
 from datetime import datetime
 from django.db.models import Q
 
-
 # Create your views here.
 def index(request):
      return render(request, 'index.html') 
-
 
 def all_emp(request):
      emps = Employee.objects.all()
@@ -17,7 +15,6 @@ def all_emp(request):
      }
      print(context)
      return render(request, 'all_emp.html', context)
-
 
 def add_emp(request):
      if request.method == 'POST':
@@ -29,7 +26,6 @@ def add_emp(request):
           role = int(request.POST['role'])
           phone = int(request.POST['phone'])
           hire_date = request.POST['hire_date']
-
           new_emp = Employee(first_name=first_name, last_name=last_name, department_id=dept, salary=salary, bonus=bonus, role_id=role, phone=phone, hire_date=datetime.now())
           new_emp.save()
           return render(request, 'add_emp.html')
@@ -37,8 +33,6 @@ def add_emp(request):
           return render(request, 'add_emp.html')
      else:
           return HttpResponse('An exception occurred! Employee has not been added')
-
-
 
 def remove_emp(request, emp_id=0):
     if emp_id != 0:
@@ -48,14 +42,11 @@ def remove_emp(request, emp_id=0):
             return HttpResponse('Employee removed successfully')
         except Employee.DoesNotExist:
             return HttpResponse('Please enter a valid Employee ID')
-
     emps = Employee.objects.all()
     context = {
         'emps': emps
     }
     return render(request, 'remove_emp.html', context)
-
-
 
 def filter_emp(request):
      if request.method == 'POST':
@@ -79,6 +70,3 @@ def filter_emp(request):
                return render(request, 'filter_emp.html')
      else:    
           return HttpResponse('An exception occurred')
-          
-     
-     
